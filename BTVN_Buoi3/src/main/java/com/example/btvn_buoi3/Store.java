@@ -1,17 +1,15 @@
 package com.example.btvn_buoi3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Store {
+    public static List<User> userList = new ArrayList<>();
 
-    public static User[] temp = {
-            new User(1, "admin", "1", "admin"),
-            new User(2, "ngduyminhquan", "1010", "Nguyen Duy Minh Quan")
-    };
-
-    public static List<User> userList = new ArrayList<>(Arrays.asList(temp));
+    static {
+        userList.add(new User(1, "admin", "1", "admin"));
+        userList.add(new User(2, "ngduyminhquan", "1010", "Nguyen Duy Minh Quan"));
+    }
 
     private static int id = 2;
 
