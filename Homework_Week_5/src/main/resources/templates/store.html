@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+</head>
+<body>
+    <h2>Danh sách người dùng</h2>
+    <table>
+        <thead class="column">
+        <tr>
+            <td>ID</td>
+            <td>Tài khoản</td>
+            <td>Mật khẩu</td>
+            <td>Sửa</td>
+            <td>Xóa</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="record" th:each="item: ${users}">
+            <td th:text="*{item.getId()}"></td>
+            <td th:text="*{item.getUsername()}"></td>
+            <td th:text="*{item.getPassword()}"></td>
+            <td>
+                <a th:href="@{'/edit/' + *{item.getId()}}"> Sửa </a>
+            </td>
+            <td>
+                <a th:href="@{'/delete/' + *{item.getId()}}"> Xóa </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/api/users}">
+        Xem danh sách
+    </a>
+    <br>
+    <a th:href="@{/signup}">
+        Tạo tài khoản
+    </a>
+</body>
+</html>

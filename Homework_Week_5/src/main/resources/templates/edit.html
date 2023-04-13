@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <form th:action="@{'/edit/' + ${user.getId()}}" method="post">
+        Tài khoản: <input name="username" type="text" th:value="${user.getUsername()}">
+        <br>
+        Mật khẩu: <input name="password" type="text" th:value="${user.getPassword()}">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</head>
+<body>
+
+</body>
+</html>

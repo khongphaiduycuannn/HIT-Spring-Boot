@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+    <form th:action="@{/signup}" method="post">
+        Tài khoản: <input name="username" type="text">
+        <br>
+        Mật khẩu: <input name="password" type="text">
+        <br>
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>
