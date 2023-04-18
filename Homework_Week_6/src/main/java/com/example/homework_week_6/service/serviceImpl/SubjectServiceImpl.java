@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +28,7 @@ public class SubjectServiceImpl implements SubjectService {
             throw new NotFoundIdException("Not found student has id " + subjectDTO.getStudentId(), HttpStatus.NOT_FOUND);
 
         Subject subject = new Subject(null, subjectDTO.getName(), student.get());
+        subjectRepository.save(subject);
         return subject;
     }
 
@@ -38,7 +38,7 @@ public class SubjectServiceImpl implements SubjectService {
         if (student.isEmpty())
             throw new NotFoundIdException("Not found student has id " + id, HttpStatus.NOT_FOUND);
 
-        List<Subject> subjects = subjectRepository.findAllById(Collections.singleton(id));
+        List<Subject> subjects = student.get().getSubjects();
         if (subjects.isEmpty())
             throw new NotFoundIdException("Not found subjects of student id " + id, HttpStatus.NOT_FOUND);
 

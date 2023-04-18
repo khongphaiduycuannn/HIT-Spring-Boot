@@ -21,6 +21,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student createStudent(StudentDTO studentDTO) {
         Student student = new Student(null, studentDTO.getName(), null, null);
+        studentRepository.save(student);
         return student;
     }
 
@@ -42,7 +43,8 @@ public class StudentServiceImpl implements StudentService {
 
         String name = studentDTO.getName();
         studentRepository.updateStudent(id, name);
-        return studentRepository.findById(id).get();
+        student.get().setName(name);
+        return student.get();
     }
 
     @Override

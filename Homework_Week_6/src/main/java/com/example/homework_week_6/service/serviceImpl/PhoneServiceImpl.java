@@ -28,6 +28,7 @@ public class PhoneServiceImpl implements PhoneService {
             throw new NotFoundIdException("Not found student has id " + phoneDTO.getStudentId(), HttpStatus.FOUND);
 
         Phone phone = new Phone(null, phoneDTO.getName(), student.get());
+        phoneRepository.save(phone);
         return phone;
     }
 
@@ -37,9 +38,14 @@ public class PhoneServiceImpl implements PhoneService {
         if (phone.isEmpty())
             throw new NotFoundIdException("Not found phone has id " + id, HttpStatus.NOT_FOUND);
 
+        Optional<Student> student = studentRepository.findById(phoneDTO.getStudentId());
+        if (student.isEmpty())
+            throw new NotFoundIdException("Not found student has id " + phoneDTO.getStudentId(), HttpStatus.NOT_FOUND);
+        
         String name = phoneDTO.getName();
         phoneRepository.updatePhone(id, name);
-        return phoneRepository.findById(id).get();
+        phone.get().setName(name);
+        return phone.get();
     }
 
     @Override

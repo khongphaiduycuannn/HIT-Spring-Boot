@@ -22,6 +22,7 @@ public class Phone {
 
     private String name;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;

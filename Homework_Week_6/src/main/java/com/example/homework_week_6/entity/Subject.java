@@ -1,5 +1,6 @@
 package com.example.homework_week_6.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Subject {
 
     private String name;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
