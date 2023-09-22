@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot</title>
+</head>
+<body>
+    <form th:action="@{/store}" method="post">
+        <p>Tài khoản:</p>
+        <input name="name" type="text">
+        <p>Mật khẩu:</p>
+        <input name="password" type="text">
+        <p></p>
+        <input type="submit" value="Login">
+    </form>
+
+    <a th:href="@{/signup}">
+        Sign up
+    </a>
+</body>
+</html>
